@@ -254,6 +254,10 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "PhoneToPocket 需要使用摄像头进行视频拍摄";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "PhoneToPocket 需要使用麦克风录制音频和语音识别";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "PhoneToPocket 需要将录制的视频保存到相册";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "PhoneToPocket 需要语音识别来驱动提词器自动滚动";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -298,6 +302,10 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "PhoneToPocket 需要使用摄像头进行视频拍摄";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "PhoneToPocket 需要使用麦克风录制音频和语音识别";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "PhoneToPocket 需要将录制的视频保存到相册";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "PhoneToPocket 需要语音识别来驱动提词器自动滚动";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
