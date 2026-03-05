@@ -52,17 +52,19 @@ struct HearView: View {
                         Image(systemName: "clock.arrow.circlepath")
                     }
                 }
-                ToolbarItemGroup(placement: .topBarTrailing) {
-                    Button {
-                        startNewConversation()
-                    } label: {
-                        Image(systemName: "plus")
-                    }
+                ToolbarItem(placement: .topBarTrailing) {
+                    HStack(spacing: 12) {
+                        Button {
+                            startNewConversation()
+                        } label: {
+                            Image(systemName: "plus.circle")
+                        }
 
-                    Button {
-                        activeSheet = .settings
-                    } label: {
-                        Image(systemName: "gearshape")
+                        Button {
+                            activeSheet = .settings
+                        } label: {
+                            Image(systemName: "gearshape")
+                        }
                     }
                 }
             }
