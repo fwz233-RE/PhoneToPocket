@@ -1,15 +1,17 @@
 import SwiftUI
 
-enum AppScreen: Hashable {
-    case scriptInput
-    case recording
+enum AppTab: Hashable {
+    case hear
+    case see
+    case insight
 }
 
 @Observable
 final class AppState {
-    var currentScreen: AppScreen = .scriptInput
+    var selectedTab: AppTab = .see
     var scriptText: String = ""
     var scriptLines: [String] = []
+    var showSettings: Bool = false
 
     func prepareScript() {
         scriptLines = scriptText
@@ -18,9 +20,14 @@ final class AppState {
             .filter { !$0.isEmpty }
     }
 
-    func navigateTo(_ screen: AppScreen) {
-        withAnimation(.spring(duration: 0.6, bounce: 0.15)) {
-            currentScreen = screen
-        }
+    func navigateToSeeWithScript(_ script: String) {
+        scriptText = script
+        selectedTab = .see
+    }
+
+    var pendingURL: URL?
+
+    func handleIncomingURL(_ url: URL) {
+        pendingURL = url
     }
 }

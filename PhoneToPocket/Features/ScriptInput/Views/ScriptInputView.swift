@@ -3,44 +3,25 @@ import SwiftUI
 struct ScriptInputView: View {
     @Environment(AppState.self) private var appState
     @FocusState private var isEditorFocused: Bool
-    @State private var animateIn = false
+
+    var onStartRecording: () -> Void
 
     var body: some View {
-        ZStack {
-            Color.black.ignoresSafeArea()
+        VStack(spacing: 0) {
+            scriptEditor
+                .padding(.top, 8)
 
-            VStack(spacing: 0) {
-                header.padding(.top, 12)
-                scriptEditor.padding(.top, 20)
-
-                if !appState.scriptText.isEmpty {
-                    statsRow.padding(.top, 8)
-                }
-
-                Spacer()
-                startButton.padding(.bottom, 40)
+            if !appState.scriptText.isEmpty {
+                statsRow
+                    .padding(.top, 8)
             }
+
+            Spacer()
+
+            startButton
+                .padding(.bottom, 20)
         }
         .onTapGesture { isEditorFocused = false }
-        .onAppear {
-            withAnimation(.easeOut(duration: 0.5)) { animateIn = true }
-        }
-    }
-
-    // MARK: - Header
-
-    @ViewBuilder
-    private var header: some View {
-        HStack {
-            VStack(alignment: .leading, spacing: 2) {
-                Text("PhoneToPocket")
-                    .font(.title2.bold()).foregroundStyle(.white)
-                Text("视频文案")
-                    .font(.caption).foregroundStyle(.white.opacity(0.4))
-            }
-            Spacer()
-        }
-        .padding(.horizontal, 24)
     }
 
     // MARK: - Editor
@@ -52,22 +33,22 @@ struct ScriptInputView: View {
         ZStack(alignment: .topLeading) {
             TextEditor(text: $state.scriptText)
                 .scrollContentBackground(.hidden)
-                .font(.body).foregroundStyle(.white)
+                .font(.body)
+                .foregroundStyle(.primary)
                 .focused($isEditorFocused)
                 .padding(16)
 
             if appState.scriptText.isEmpty {
                 Text("在此输入视频文案…\n\n每行对应提词器一行\n留空则不使用提词器")
-                    .font(.body).foregroundStyle(.white.opacity(0.25))
-                    .padding(.horizontal, 21).padding(.vertical, 24)
+                    .font(.body)
+                    .foregroundStyle(.tertiary)
+                    .padding(.horizontal, 21)
+                    .padding(.vertical, 24)
                     .allowsHitTesting(false)
             }
         }
-        .background(RoundedRectangle(cornerRadius: 16).fill(.white.opacity(0.06)))
-        .overlay(RoundedRectangle(cornerRadius: 16).stroke(.white.opacity(0.08), lineWidth: 1))
-        .padding(.horizontal, 20)
-        .opacity(animateIn ? 1 : 0)
-        .offset(y: animateIn ? 0 : 20)
+        .background(.quinary, in: RoundedRectangle(cornerRadius: 12))
+        .padding(.horizontal, 16)
     }
 
     // MARK: - Stats
@@ -90,9 +71,9 @@ struct ScriptInputView: View {
                 Text("≈ \(m > 0 ? "\(m)分" : "")\(s)秒")
             }
             .font(.caption)
-            .foregroundStyle(.white.opacity(0.35))
+            .foregroundStyle(.secondary)
         }
-        .padding(.horizontal, 24)
+        .padding(.horizontal, 20)
     }
 
     // MARK: - Start Button
@@ -101,19 +82,15 @@ struct ScriptInputView: View {
     private var startButton: some View {
         Button {
             isEditorFocused = false
-            appState.prepareScript()
-            appState.navigateTo(.recording)
+            onStartRecording()
         } label: {
-            HStack(spacing: 10) {
-                Image(systemName: "video.fill").font(.body)
-                Text("开始拍摄").font(.headline)
-            }
-            .foregroundStyle(.black)
-            .frame(maxWidth: .infinity).frame(height: 54)
-            .background(Capsule().fill(.white))
+            Label("开始拍摄", systemImage: "video.fill")
+                .font(.headline)
+                .foregroundStyle(.black)
+                .frame(maxWidth: .infinity)
+                .frame(height: 50)
+                .background(.white, in: RoundedRectangle(cornerRadius: 14))
         }
-        .padding(.horizontal, 40)
-        .opacity(animateIn ? 1 : 0)
-        .offset(y: animateIn ? 0 : 30)
+        .padding(.horizontal, 20)
     }
 }

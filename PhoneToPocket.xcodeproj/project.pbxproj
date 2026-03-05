@@ -6,6 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		46734E232F5082B40039169B /* MWDATCore in Frameworks */ = {isa = PBXBuildFile; productRef = 46734E212F5082B40039169B /* MWDATCore */; };
+		46734E242F5082B40039169B /* MWDATCamera in Frameworks */ = {isa = PBXBuildFile; productRef = 46734E222F5082B40039169B /* MWDATCamera */; };
+		46734E262F5082B40039169B /* MWDATMockDevice in Frameworks */ = {isa = PBXBuildFile; productRef = 46734E252F5082B40039169B /* MWDATMockDevice */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		46734E0F2F4D82B30039169B /* PhoneToPocket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhoneToPocket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -23,6 +29,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46734E232F5082B40039169B /* MWDATCore in Frameworks */,
+				46734E242F5082B40039169B /* MWDATCamera in Frameworks */,
+				46734E262F5082B40039169B /* MWDATMockDevice in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +74,9 @@
 			);
 			name = PhoneToPocket;
 			packageProductDependencies = (
+				46734E212F5082B40039169B /* MWDATCore */,
+				46734E222F5082B40039169B /* MWDATCamera */,
+				46734E252F5082B40039169B /* MWDATMockDevice */,
 			);
 			productName = PhoneToPocket;
 			productReference = 46734E0F2F4D82B30039169B /* PhoneToPocket.app */;
@@ -94,6 +106,9 @@
 			);
 			mainGroup = 46734E062F4D82B30039169B;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				46734E202F5082B40039169B /* XCRemoteSwiftPackageReference "meta-wearables-dat-ios" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 46734E102F4D82B30039169B /* Products */;
 			projectDirPath = "";
@@ -254,14 +269,19 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Info.plist;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "PhoneToPocket 需要蓝牙连接 Meta 智能眼镜";
 				INFOPLIST_KEY_NSCameraUsageDescription = "PhoneToPocket 需要使用摄像头进行视频拍摄";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "PhoneToPocket 需要获取位置信息来回答位置相关问题";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "PhoneToPocket 需要使用麦克风录制音频和语音识别";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "PhoneToPocket 需要将录制的视频保存到相册";
+				INFOPLIST_KEY_NSRemindersFullAccessUsageDescription = "PhoneToPocket 的 AI 助手需要访问提醒事项来管理待办任务";
 				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "PhoneToPocket 需要语音识别来驱动提词器自动滚动";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UIBackgroundModes = "audio bluetooth-peripheral external-accessory";
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
@@ -302,14 +322,19 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Info.plist;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "PhoneToPocket 需要蓝牙连接 Meta 智能眼镜";
 				INFOPLIST_KEY_NSCameraUsageDescription = "PhoneToPocket 需要使用摄像头进行视频拍摄";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "PhoneToPocket 需要获取位置信息来回答位置相关问题";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "PhoneToPocket 需要使用麦克风录制音频和语音识别";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "PhoneToPocket 需要将录制的视频保存到相册";
+				INFOPLIST_KEY_NSRemindersFullAccessUsageDescription = "PhoneToPocket 的 AI 助手需要访问提醒事项来管理待办任务";
 				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "PhoneToPocket 需要语音识别来驱动提词器自动滚动";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UIBackgroundModes = "audio bluetooth-peripheral external-accessory";
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
@@ -359,6 +384,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		46734E202F5082B40039169B /* XCRemoteSwiftPackageReference "meta-wearables-dat-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/facebook/meta-wearables-dat-ios";
+			requirement = {
+				kind = exactVersion;
+				version = 0.4.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		46734E212F5082B40039169B /* MWDATCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 46734E202F5082B40039169B /* XCRemoteSwiftPackageReference "meta-wearables-dat-ios" */;
+			productName = MWDATCore;
+		};
+		46734E222F5082B40039169B /* MWDATCamera */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 46734E202F5082B40039169B /* XCRemoteSwiftPackageReference "meta-wearables-dat-ios" */;
+			productName = MWDATCamera;
+		};
+		46734E252F5082B40039169B /* MWDATMockDevice */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 46734E202F5082B40039169B /* XCRemoteSwiftPackageReference "meta-wearables-dat-ios" */;
+			productName = MWDATMockDevice;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 46734E072F4D82B30039169B /* Project object */;
 }

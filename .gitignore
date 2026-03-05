@@ -3,3 +3,6 @@
 xcuserdata/
 *.xcworkspace/xcuserdata
 *.xcuserdatad
+
+# API Keys - never commit
+PhoneToPocket/App/APIKeys.swift

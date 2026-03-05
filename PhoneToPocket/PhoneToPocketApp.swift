@@ -1,28 +1,46 @@
 import SwiftUI
+import SwiftData
+
+#if os(iOS)
+import MWDATCore
+#endif
 
 @main
 struct PhoneToPocketApp: App {
     @State private var appState = AppState()
 
+    init() {
+        #if os(iOS)
+        do {
+            try Wearables.configure()
+        } catch {
+            print("[App] Wearables SDK configure failed: \(error)")
+        }
+        #endif
+    }
+
     var body: some Scene {
         WindowGroup {
-            ZStack {
-                Color.black.ignoresSafeArea()
-
-                Group {
-                    switch appState.currentScreen {
-                    case .scriptInput:
-                        ScriptInputView()
-                            .transition(.move(edge: .leading).combined(with: .opacity))
-
-                    case .recording:
-                        RecordingView()
-                            .transition(.blurReplace(.downUp).combined(with: .opacity))
+            MainTabView()
+                .environment(appState)
+                .preferredColorScheme(.dark)
+                .onOpenURL { url in
+                    #if os(iOS)
+                    Task {
+                        do {
+                            _ = try await Wearables.shared.handleUrl(url)
+                        } catch {
+                            print("[App] Wearables handleUrl failed: \(error)")
+                        }
                     }
+                    #endif
+                    appState.handleIncomingURL(url)
                 }
-            }
-            .environment(appState)
-            .preferredColorScheme(.dark)
         }
+        .modelContainer(for: [
+            Conversation.self,
+            ChatMessage.self,
+            TodoItem.self,
+        ])
     }
 }

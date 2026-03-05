@@ -1,0 +1,9 @@
+import Foundation
+
+// Copy this file to APIKeys.swift and fill in your actual API keys.
+// APIKeys.swift is .gitignore'd and will NOT be committed.
+enum APIKeys {
+    nonisolated static let deepSeek = "YOUR_DEEPSEEK_API_KEY"
+    nonisolated static let dashScope = "YOUR_DASHSCOPE_API_KEY"
+    nonisolated static let zhipuAI = "YOUR_ZHIPU_API_KEY"
+}

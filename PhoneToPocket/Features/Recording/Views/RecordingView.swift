@@ -2,6 +2,7 @@ import SwiftUI
 
 struct RecordingView: View {
     @Environment(AppState.self) private var appState
+    @Environment(\.dismiss) private var dismiss
     @State private var viewModel = RecordingViewModel()
     @State private var showCompletion = false
 
@@ -16,7 +17,6 @@ struct RecordingView: View {
                 controlsSection
                 recordBar.padding(.bottom, 26)
             }
-
         }
         .overlay {
             if showCompletion { savedToast }
@@ -112,11 +112,13 @@ struct RecordingView: View {
             HStack(spacing: 44) {
                 Button {
                     viewModel.cleanup()
-                    appState.navigateTo(.scriptInput)
+                    dismiss()
                 } label: {
-                    Image(systemName: "chevron.left")
-                        .font(.title2).foregroundStyle(.white.opacity(0.65))
+                    Image(systemName: "xmark")
+                        .font(.title3.weight(.medium))
+                        .foregroundStyle(.white.opacity(0.65))
                         .frame(width: 50, height: 50)
+                        .background(.white.opacity(0.1), in: Circle())
                 }
 
                 Button {
@@ -139,13 +141,11 @@ struct RecordingView: View {
                 }
 
                 Button { viewModel.openSystemPhotos() } label: {
-                    RoundedRectangle(cornerRadius: 8)
-                        .fill(.white.opacity(0.12))
+                    Image(systemName: "photo.on.rectangle")
+                        .font(.title3)
+                        .foregroundStyle(.white.opacity(0.65))
                         .frame(width: 50, height: 50)
-                        .overlay {
-                            Image(systemName: "photo.on.rectangle")
-                                .font(.title3).foregroundStyle(.white.opacity(0.65))
-                        }
+                        .background(.white.opacity(0.1), in: Circle())
                 }
             }
 
