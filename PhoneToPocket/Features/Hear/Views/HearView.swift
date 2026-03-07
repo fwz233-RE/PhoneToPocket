@@ -204,7 +204,11 @@ struct HearView: View {
         vm.modelContext = modelContext
         vm.toolCallService.modelContext = modelContext
         vm.chatMode = hasBluetoothAudioDevice() ? .voice : .text
-        vm.createNewConversation()
+        if let latest = conversations.first, latest.messages.isEmpty {
+            vm.loadConversation(latest)
+        } else {
+            vm.createNewConversation()
+        }
         chatViewModel = vm
     }
 

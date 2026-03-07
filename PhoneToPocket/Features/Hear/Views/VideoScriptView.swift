@@ -17,7 +17,7 @@ struct VideoScriptView: View {
             }
         }
         .padding(.top, 12)
-        .padding(.bottom, 16)
+        .padding(.bottom, 2)//---以后改
     }
 
     // MARK: - Generating State

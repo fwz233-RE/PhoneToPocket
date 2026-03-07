@@ -61,7 +61,7 @@ struct ChatView: View {
                     }
                 }
                 .padding(.top, 12)
-                .padding(.bottom, 8)
+                .padding(.bottom, 2)
             }
             .scrollDismissesKeyboard(.interactively)
             .safeAreaInset(edge: .bottom) {
