@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		46734E232F5082B40039169B /* MWDATCore in Frameworks */ = {isa = PBXBuildFile; productRef = 46734E212F5082B40039169B /* MWDATCore */; };
 		46734E242F5082B40039169B /* MWDATCamera in Frameworks */ = {isa = PBXBuildFile; productRef = 46734E222F5082B40039169B /* MWDATCamera */; };
-		46734E262F5082B40039169B /* MWDATMockDevice in Frameworks */ = {isa = PBXBuildFile; productRef = 46734E252F5082B40039169B /* MWDATMockDevice */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,7 +30,6 @@
 			files = (
 				46734E232F5082B40039169B /* MWDATCore in Frameworks */,
 				46734E242F5082B40039169B /* MWDATCamera in Frameworks */,
-				46734E262F5082B40039169B /* MWDATMockDevice in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,7 +74,6 @@
 			packageProductDependencies = (
 				46734E212F5082B40039169B /* MWDATCore */,
 				46734E222F5082B40039169B /* MWDATCamera */,
-				46734E252F5082B40039169B /* MWDATMockDevice */,
 			);
 			productName = PhoneToPocket;
 			productReference = 46734E0F2F4D82B30039169B /* PhoneToPocket.app */;
@@ -290,15 +287,13 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
-				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 26.1;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = fwz233.PhoneToPocket;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = auto;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator xros xrsimulator";
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -343,15 +338,13 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
-				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 26.1;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = fwz233.PhoneToPocket;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = auto;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator xros xrsimulator";
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -406,11 +399,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 46734E202F5082B40039169B /* XCRemoteSwiftPackageReference "meta-wearables-dat-ios" */;
 			productName = MWDATCamera;
-		};
-		46734E252F5082B40039169B /* MWDATMockDevice */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 46734E202F5082B40039169B /* XCRemoteSwiftPackageReference "meta-wearables-dat-ios" */;
-			productName = MWDATMockDevice;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
