@@ -90,7 +90,6 @@ final class MetaGlassesService {
         isInitialized = true
 
         if w.registrationState == .registered {
-            connectionState = .connected
             monitorDevices()
         }
 
@@ -129,7 +128,6 @@ final class MetaGlassesService {
         switch state {
         case .registered:
             if connectionState != .connected && connectionState != .streaming {
-                connectionState = .connected
                 errorMessage = nil
                 monitorDevices()
             }
@@ -153,7 +151,6 @@ final class MetaGlassesService {
 
         let sdkState = wearables.registrationState
         if sdkState == .registered {
-            connectionState = .connected
             errorMessage = nil
             monitorDevices()
             return
@@ -178,7 +175,6 @@ final class MetaGlassesService {
                     if let regError = error as? RegistrationError {
                         switch regError {
                         case .alreadyRegistered:
-                            self.connectionState = .connected
                             self.errorMessage = nil
                             self.monitorDevices()
                             return
@@ -444,7 +440,6 @@ final class MetaGlassesService {
                 await MainActor.run {
                     switch state {
                     case .registered:
-                        self.connectionState = .connected
                         self.errorMessage = nil
                     case .registering:
                         self.connectionState = .connecting
@@ -467,13 +462,16 @@ final class MetaGlassesService {
         deviceMonitorTask = Task {
             for await devices in wearables.devicesStream() {
                 await MainActor.run {
-                    if !devices.isEmpty {
-                        if self.connectionState == .disconnected {
-                            self.connectionState = .connected
-                        }
-                    } else if self.connectionState == .connected {
-                        print("[MetaGlasses] device disappeared, monitoring for reconnect")
+                if !devices.isEmpty {
+                    if self.connectionState != .streaming {
+                        self.connectionState = .connected
                     }
+                } else {
+                    if self.connectionState == .connected {
+                        self.connectionState = .disconnected
+                        print("[MetaGlasses] no devices found, set disconnected")
+                    }
+                }
                 }
             }
         }
@@ -484,15 +482,7 @@ final class MetaGlassesService {
         keepAliveTask?.cancel()
         keepAliveTask = Task {
             while !Task.isCancelled {
-                try? await Task.sleep(nanoseconds: 10_000_000_000)
-                guard let wearables else { continue }
-                await MainActor.run {
-                    let regState = wearables.registrationState
-                    if regState == .registered, self.connectionState == .disconnected {
-                        self.connectionState = .connected
-                        print("[MetaGlasses] keepalive: restored connected state")
-                    }
-                }
+                try? await Task.sleep(nanoseconds: 30_000_000_000)
             }
         }
     }

@@ -8,7 +8,7 @@ struct InsightView: View {
         NavigationStack {
             ContentUnavailableView(
                 "即将上线",
-                systemImage: "wand.and.stars",
+                systemImage: "hand.tap",
                 description: Text("AI 驱动的智能视频剪辑与内容输出")
             )
             .navigationTitle("灼见")

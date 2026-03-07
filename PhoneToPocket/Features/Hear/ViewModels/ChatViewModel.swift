@@ -8,7 +8,7 @@ final class ChatViewModel {
     var streamingText: String = ""
     var reasoningText: String = ""
     var isStreaming = false
-    var chatMode: ChatMode = .voice
+    var chatMode: ChatMode = .text
     var inputText: String = ""
     var showError = false
     var errorText = ""

@@ -16,7 +16,8 @@ struct VideoScriptView: View {
                 generateButton
             }
         }
-        .padding(.vertical, 12)
+        .padding(.top, 12)
+        .padding(.bottom, 16)
     }
 
     // MARK: - Generating State

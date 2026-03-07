@@ -87,6 +87,10 @@ struct HearView: View {
         }
         .onChange(of: appState.selectedTab) { _, newTab in
             if newTab == .hear {
+                let targetMode: ChatMode = hasBluetoothAudioDevice() ? .voice : .text
+                if let vm = chatViewModel, vm.chatMode != targetMode {
+                    vm.switchMode(targetMode)
+                }
                 chatViewModel?.startVoiceInputDeferred()
             } else {
                 chatViewModel?.stopAll()
@@ -199,6 +203,7 @@ struct HearView: View {
         let vm = ChatViewModel(metaGlassesService: metaGlassesService)
         vm.modelContext = modelContext
         vm.toolCallService.modelContext = modelContext
+        vm.chatMode = hasBluetoothAudioDevice() ? .voice : .text
         vm.createNewConversation()
         chatViewModel = vm
     }
@@ -209,6 +214,7 @@ struct HearView: View {
         let vm = ChatViewModel(metaGlassesService: metaGlassesService)
         vm.modelContext = modelContext
         vm.toolCallService.modelContext = modelContext
+        vm.chatMode = hasBluetoothAudioDevice() ? .voice : .text
         vm.loadConversation(conv)
         chatViewModel = vm
     }
@@ -229,6 +235,13 @@ struct HearView: View {
             shakingId = nil
             shakePhase = 0
         }
+    }
+
+    private func hasBluetoothAudioDevice() -> Bool {
+        let route = AVAudioSession.sharedInstance().currentRoute
+        let bluetoothPorts: Set<AVAudioSession.Port> = [.bluetoothA2DP, .bluetoothHFP, .bluetoothLE]
+        return route.outputs.contains { bluetoothPorts.contains($0.portType) }
+            || route.inputs.contains { bluetoothPorts.contains($0.portType) }
     }
 
     private func configureAudioSession() {

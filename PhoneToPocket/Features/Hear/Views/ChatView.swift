@@ -9,10 +9,7 @@ struct ChatView: View {
     var body: some View {
         ZStack {
             videoStreamBackground
-            VStack(spacing: 0) {
-                messagesList
-                ChatInputBar(viewModel: viewModel)
-            }
+            messagesList
         }
         .navigationTitle(viewModel.conversation?.title ?? "新对话")
         .navigationBarTitleDisplayMode(.inline)
@@ -63,9 +60,13 @@ struct ChatView: View {
                             .id("video-script")
                     }
                 }
-                .padding(.vertical, 12)
+                .padding(.top, 12)
+                .padding(.bottom, 8)
             }
             .scrollDismissesKeyboard(.interactively)
+            .safeAreaInset(edge: .bottom) {
+                ChatInputBar(viewModel: viewModel)
+            }
             .onChange(of: viewModel.streamingText) {
                 withAnimation {
                     if !viewModel.streamingText.isEmpty {

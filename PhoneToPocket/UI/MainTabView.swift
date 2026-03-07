@@ -15,7 +15,7 @@ struct MainTabView: View {
                 SeeTabView()
             }
 
-            Tab("灼见", systemImage: "wand.and.stars", value: .insight) {
+            Tab("灼见", systemImage: "hand.tap", value: .insight) {
                 InsightView()
             }
         }
